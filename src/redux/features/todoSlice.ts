@@ -4,7 +4,7 @@ type TTodo = {
   id: string;
   title: string;
   description: string;
-  isCompleted?: boolean;
+  completed?: boolean;
 };
 
 type TInitialState = {
@@ -20,14 +20,14 @@ const todoSlice = createSlice({
   initialState,
   reducers: {
     addTodo: (state, action: PayloadAction<TTodo>) => {
-      state.todos.push({ ...action.payload, isCompleted: false });
+      state.todos.push({ ...action.payload, completed: false });
     },
     removeTodo: (state, action: PayloadAction<string>) => {
       state.todos = state.todos.filter((item) => item.id !== action.payload);
     },
     toggleComplete: (state, action: PayloadAction<string>) => {
       const task = state.todos.find((item) => item.id === action.payload);
-      task!.isCompleted = !task?.isCompleted;
+      task!.completed = !task?.completed;
     },
   },
 });

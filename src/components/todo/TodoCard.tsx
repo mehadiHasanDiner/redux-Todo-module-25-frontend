@@ -12,30 +12,29 @@ type TTodoCardProps = {
 const TodoCard = ({ title, description, id, isCompleted }: TTodoCardProps) => {
   const dispatch = useAppDispatch();
 
-
   const toggleState = () => {
-    dispatch(toggleComplete(id))
-  }
+    dispatch(toggleComplete(id));
+  };
 
   return (
     <div className="flex items-center justify-between rounded border bg-white p-3">
       <input
+        className="mr-3"
         onChange={toggleState}
         type="checkbox"
         name="complete"
         id="complete"
       />
-      <p className="font-semibold"> {title} </p>
-      {/* <p>Time</p> */}
+      <p className="font-semibold flex-[2]"> {title} </p>
       <div>
         {isCompleted ? (
-          <p className="text-green-500">Done</p>
+          <p className="text-green-500 flex-1">Done</p>
         ) : (
           <p className="text-red-500">Pending</p>
         )}
       </div>
 
-      <p>{description}</p>
+      <p className="flex-1">{description}</p>
       <div className="space-x-5">
         <Button onClick={() => dispatch(removeTodo(id))} className="bg-red-500">
           <svg
