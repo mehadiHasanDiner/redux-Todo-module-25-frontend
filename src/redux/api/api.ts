@@ -34,7 +34,7 @@ export const baseApi = createApi({
         console.log("inside base api", option);
         return {
           url: `/todos/${option.id}`,
-          method: "POST",
+          method: "PUT",
           body: option.data,
         };
       },

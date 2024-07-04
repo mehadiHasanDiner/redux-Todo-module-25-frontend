@@ -4,15 +4,14 @@ import { removeTodo, toggleComplete } from "@/redux/features/todoSlice";
 import { useUpdateTodoMutation } from "@/redux/api/api";
 
 type TTodoCardProps = {
-  id: string;
-  title: string;
   _id: string;
+  title: string;
   description: string;
   isCompleted: boolean;
   priority: string;
 };
 
-const TodoCard = ({ title, description, id, isCompleted, priority }: TTodoCardProps) => {
+const TodoCard = ({ title, description, _id, isCompleted, priority }: TTodoCardProps) => {
   // const dispatch = useAppDispatch();
   const [updateTodo, { isLoading }] = useUpdateTodoMutation();
 
@@ -36,7 +35,7 @@ const TodoCard = ({ title, description, id, isCompleted, priority }: TTodoCardPr
 
 
 
-    updateTodo(taskData)
+    updateTodo(options)
   };
 
   return (
